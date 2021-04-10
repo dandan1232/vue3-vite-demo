@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>林蛋蛋</title>
+</head>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+
+<body>
+    <div id="app" v-cloak>
+        <p>姓名：{{ name }}</p>
+        <p>职业：{{ state.work }}</p>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        // Vue 现在存在于 window 全局变量下，所以直接通过 ES6 解构出 createApp、ref、reactive
+        const { createApp, ref, reactive } = Vue;
+        console.log(Vue);
+        const App = {
+            setup() {
+                const name = ref("DanDan");
+                const state = reactive({
+                    work: "职业干饭人",
+                });
+                return {
+                    state,
+                    name,
+                };
+            },
+        };
+        createApp(App).mount("#app");
+    </script>
+</body>
+
+</html>
